@@ -10,10 +10,10 @@ bot = telebot.TeleBot(token)
 def check(user):
     basa = pd.read_excel('basa.xlsx', index_col=0)
     if user in basa['user'].tolist():
-        name = basa.iloc[basa['user'].tolist().index('ars44pro')]['name']
+        name = basa.iloc[basa['user'].tolist().index(user)]['name']
         return True, name
     else:
-        return False
+        return False, 'nothing'
 
 def text_to_waven(text, output_file):
     tts = gTTS(text=text, lang='en')
@@ -24,12 +24,18 @@ def text_to_wavru(text, output_file):
 
 train = pd.read_excel('basa.xlsx', index_col=0)
 for i in train['id'].tolist():
-    bot.send_message(i, 'По техническим причинам сервер прекратил свою работу, чтобы восстановить работу нажмите на /start!')
+    if i != 'ничего':
+        bot.send_message(i, 'По техническим причинам сервер прекратил свою работу, чтобы восстановить работу нажмите на /start!')
 
 @bot.message_handler(commands=['start'])
 def welcome_start(mess):
     status, name = check(mess.from_user.username)
     if status:
+        test = pd.read_excel('basa.xlsx', index_col=0)
+        if mess.chat.id != test.iloc[test['user'].tolist().index(mess.from_user.username)]['id']:
+            test.iloc[test['user'].tolist().index(mess.from_user.username)]['id'] = mess.chat.id
+            test.to_excel('basa.xlsx')
+
         bot.send_message(mess.chat.id, f'Добро пожаловать, {name}!')
         @bot.message_handler(content_types=['voice'])
         def voice_processing(message):
@@ -54,6 +60,3 @@ def welcome_start(mess):
     else:
         bot.send_message(mess.chat.id, 'Доступ запрещен!')
 bot.polling(none_stop=True, interval=0)
-
-#Нужно сделать чтобы id автоматически добавлял, а также посмотреть что будет если зайти типо неавторизованному пользователю
-
