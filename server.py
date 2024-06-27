@@ -17,4 +17,8 @@ def post():
 	print(b)	
 	return ''
 
+@app.route('/')
+def get():
+	return 'ok'
+
 app.run(host='0.0.0.0', port=8090)
