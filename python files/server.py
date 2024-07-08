@@ -11,8 +11,6 @@ def post():
 		f.write('2')
 	elif b == b'1':
 		f.write('1')
-	elif b == b'0':
-		f.write('0')
 	f.close()
 	print(b)	
 	return ''

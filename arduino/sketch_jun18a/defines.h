@@ -38,7 +38,7 @@
 #include <WiFiWebServer_RTL8720.h>
 #include <RTL8720HttpClient.h>
 
-char ssid[] = "GreenWorld 11C";        // your network SSID (name)
+char ssid[] = "MTS_Router_5_166788";        // your network SSID (name)
 char pass[] = "70467277";        // your network password
 
 #endif    //defines_h
