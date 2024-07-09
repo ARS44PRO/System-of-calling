@@ -1,7 +1,7 @@
 #include "defines.h"
-#include "GyverButton.h"
+// #include "GyverButton.h"
 
-GButton bt(PA15, LOW_PULL);
+// GButton bt(PA15, LOW_PULL);
 const IPAddress server(192,168,1,254);
 
 WiFiClient client;
@@ -29,14 +29,13 @@ void loop()
   // bt.tick();
   WiFiHttpClient http(client, server, 8090);
   String type = "text/plain";
-  /*if (bt.isSingle()){
+  if (bt.isSingle()){
     http.post("/post", type, "2");
     Serial.println("2");
   } else if (bt.isDouble()){
     http.post("/post", type, "1");
     Serial.println("1");
-  }*/
-  http.post("/post", type, "ok");
+  }
   http.stop();  
   delay(4000);
 }

@@ -5,7 +5,7 @@ app = Flask(__name__)
 
 @app.route('/post', methods=['POST'])
 def post():
-	f = open('chisla.txt', 'w')
+	f = open('data\chisla.txt', 'w')
 	b = request.data
 	if b == b'2':
 		f.write('2')
