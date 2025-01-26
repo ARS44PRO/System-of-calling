@@ -4,7 +4,6 @@
 // GButton bt(PA15, LOW_PULL);
 const IPAddress server(192,168,1,254);
 
-WiFiClient client;
 
 void setup()
 {
