@@ -4,7 +4,7 @@ import re
 import pandas as pd
 reg = re.compile(r'[a-zA-Z]')
 
-token = '6958580930:AAFu6hp2ZWjdF7iOyebqzoxLcVeWkk-t51k'
+token = ''
 bot = telebot.TeleBot(token)
 
 def check(user):
