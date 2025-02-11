@@ -36,5 +36,5 @@ void loop()
     Serial.println("1");
   }
   http.stop();  
-  delay(4000);
+  delay(400);
 }
